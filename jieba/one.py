@@ -31,53 +31,31 @@ print('词性标注结果:')
 print([(x.word,x.flag) for x in psg.cut(strings)])
 
 
-#某些词性的数量统计
-print('某些类型词的数量统计：')
-v=0
-n=0
-a=0
-ad=0
-c=0
-for x in psg.cut(strings):
-    if (x.flag=='v'):
-       v=v+1;
-    if (x.flag=='n'):
-       n=n+1;
-    if (x.flag=='a'):
-       a=a+1;
-    if (x.flag=='ad'):
-       ad=ad+1;
-    if (x.flag=='c'):
-       c=c+1;
-print('v动词:')
-print(v)
-print('n名词:')
-print(n)
-print('a形容词:')
-print(a)
-print('ad副形词:')
-print(ad)
-print('c连词:')
-print(c)
+#词性的数量统计
+print('部分类型词的数量统计：')
+k=0
+cixing=['v','n','a','ad','c','an','ag','al','b','bl','cc','d','e','f','h','k','m','mq','nr','nr1','nr2','nrj','nrf','ns','nsf','nt','nz','nl','ng','o','p','pba','pbei','q','qv','qt']
+for cx in cixing:
+  for x in psg.cut(strings):
+    if (x.flag==cx):
+       k=k+1;
+  print(cx)
+  print(k)
+  k=0
+
 
 #某些词出现次数
+CI=['在','的','说','呢','走','可以']
 print('某些词出现次数:')
 n=0
-for x in psg.cut(strings):
-       if (x.word=='在'):
+for c in CI:
+  for x in psg.cut(strings):
+       if (x.word==c):
          n=n+1
-print('在')
-print(n)
-for x in psg.cut(strings):
-       if (x.word=='的'):
-         n=n+1
-print('的')
-print(n)
-for x in psg.cut(strings):
-       if (x.word=='说'):
-         n=n+1
-print('说')
-print(n)
+  print(c)
+  print(n)
+  n=0
+
 
 # a=[]
 # print('词性标注结果2:')
