@@ -19,6 +19,8 @@ print(stopword)
 
 fn=open('jiebats.txt',"r",encoding='utf-8')
 
+sens=re.split(r'(?:[。！“，？”、])',fn.read()) 
+
 
 for line in fn.readlines():
         voc=pg.cut(line)
@@ -49,7 +51,7 @@ for i in faset:
 wddict=dict(zip(wdset,wdc))
 fadict=dict(zip(faset,fac))
 
-print(wddict)
-print(fadict)
+#print(wddict)
+#print(fadict)
 
 
