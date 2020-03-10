@@ -54,4 +54,4 @@ fadict=dict(zip(faset,fac))
 #print(wddict)
 #print(fadict)
 
-
+exception_catch=[]

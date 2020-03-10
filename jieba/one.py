@@ -1,6 +1,7 @@
 import jieba
 import re
 import jieba.posseg as psg
+#coding:gbk
 #coding:utf-8
 # _*_ coding: utf-8 _*_
 
@@ -22,8 +23,25 @@ print(new_sents)
 
 #分词
 w=jieba.cut(strings)
-print('分词结果:')
-print(','.join(w))
+print('分词结果写入文本')
+fenci='/'.join(w)
+file_handle=open('分词结果.txt',mode='w')   #分词结果写入文本
+file_handle.writelines(fenci)
+file_handle.close()
+
+#去停词结果写入新文本
+print('去停词结果写入文本')
+stopwords = {}.fromkeys([ line.rstrip() for line in open('stopwords.txt') ])
+final = ''
+for seg in fenci:
+    if seg not in stopwords:
+            final += seg
+file_handle1=open('去停词结果.txt',mode='w')
+file_handle1.writelines(final)
+file_handle1.close()
+
+
+
 
 
 #词性
@@ -57,10 +75,5 @@ for c in CI:
   n=0
 
 
-# a=[]
-# print('词性标注结果2:')
-# for x in psg.cut(strings):
-#     if not(x.flag=='x' or x.flag=='n'):
-#        a.append([(x.word,x.flag) for x in psg.cut(strings)])
-# print(a)
+
 
