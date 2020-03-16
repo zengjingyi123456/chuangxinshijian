@@ -1,0 +1,30 @@
+与 whoosh 集成时，无法parse "*" 这个通配符
+paddle 模式下词性标注，并发时可能会出错
+添加自定义词后依然分词失败
+分词不成功，分词后还是完整的句子
+paddle模型如何再训练，paddle模式词典添加自定义关键词不生效
+Fix deprecation warnings due to invalid escape sequences.
+cut mixed languages use paddle
+词典格式中的词频指的是什么？
+Deprecation warning due to invalid escape sequences in Python 3.8
+Remove meaningless branch statements
+NLTK英文
+字典如何添加包含关键字的模糊匹配
+无法安装，缺少文件
+test_whoosh.py 中，parser.parse(keyword)的问题
+Missing git tag for 0.41 release
+TypeError: lcut() got an unexpected keyword argument 'use_paddle'
+自定义词典与默认词典冲突时候
+enable paddle lazy load
+warning: the imp module is deprecated in favour of importlib
+当前词性标注，只支持中文吗，英文字母都会标注为eng吗？
+如何把凡是带“女”的都分出来
+> @gumblex 你好，想请教下，为什么要把前缀也存起来呢，不在字典的词语前缀，词频永远是0吧？
+自定义新词只被识别一次
+输入一个重复的词，很长很长，就会卡死，没有分好词
+jieba.load_userdict 字典中不能省略词频与词性？
+jieba 如何才可以自动识别 xx年xx月xx日  浮点数
+自定义词典在分词标注 不起作用
+add jieba
+Update extract_tags_idfpath.py
+自定义词典如何持久化添加
