@@ -1,11 +1,11 @@
-import jieba
+import zqf
 import re
-import jieba.posseg as psg
-#coding:gbk
+import zqf.posseg as psg
 #coding:utf-8
+
 # _*_ coding: utf-8 _*_
 
-fileobj = open('xs.txt', 'r')    #读取文本放到strings中
+fileobj = open('xyj.txt', 'r')    #读取文本放到strings中
 try:
    strings = fileobj.read()
 finally:
@@ -22,26 +22,9 @@ print(new_sents)
 
 
 #分词
-w=jieba.cut(strings)
-print('分词结果写入文本')
-fenci='/'.join(w)
-file_handle=open('分词结果.txt',mode='w')   #分词结果写入文本
-file_handle.writelines(fenci)
-file_handle.close()
-
-#去停词结果写入新文本
-print('去停词结果写入文本')
-stopwords = {}.fromkeys([ line.rstrip() for line in open('stopwords.txt') ])
-final = ''
-for seg in fenci:
-    if seg not in stopwords:
-            final += seg
-file_handle1=open('去停词结果.txt',mode='w')
-file_handle1.writelines(final)
-file_handle1.close()
-
-
-
+w=zqf.cut(strings)
+print('分词结果:')
+print(','.join(w))
 
 
 #词性
@@ -73,7 +56,3 @@ for c in CI:
   print(c)
   print(n)
   n=0
-
-
-
-
