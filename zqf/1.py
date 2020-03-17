@@ -1,8 +1,8 @@
-import zqf
+import jieba
 import re
-import zqf.posseg as psg
+import jieba.posseg as psg
+#coding:gbk
 #coding:utf-8
-
 # _*_ coding: utf-8 _*_
 
 fileobj = open('xyj.txt', 'r')    #读取文本放到strings中
@@ -23,8 +23,43 @@ print(new_sents)
 
 #分词
 w=zqf.cut(strings)
-print('分词结果:')
-print(','.join(w))
+print('分词结果写入文本')
+fenci='/'.join(w)
+file_handle=open('分词.txt',mode='w')   #分词结果写入文本
+file_handle.writelines(fenci)
+file_handle.close()
+
+#去停词结果写入新文本
+print('去停词结果写入文本')
+stopwords = {}.fromkeys([ line.rstrip() for line in open('停词.txt') ])
+final = ''
+fwl=''
+fwl2=''
+
+for seg in fenci:     #去停词
+    if seg not in stopwords:
+            final += seg
+file_handle1=open('去停词.txt',mode='w')
+file_handle1.writelines(final)
+file_handle1.close()
+
+word=''   #去停词以及长度小于2的词
+for seg in fenci:
+    if seg not in stopwords:
+        fwl+=seg
+
+for seg1 in fwl:
+    word+=seg1
+    if seg1=='/' and len(word)<3:
+        word=''
+    if seg1=='/' and  len(word)>2:
+
+            fwl2+=word
+            word=''
+file_handle2=open('去停词以及长度小于2的词.txt',mode='w')
+file_handle2.writelines(fwl2)
+file_handle2.close()
+
 
 
 #词性
