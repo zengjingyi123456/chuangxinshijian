@@ -33,14 +33,32 @@ file_handle.close()
 print('去停词结果写入文本')
 stopwords = {}.fromkeys([ line.rstrip() for line in open('stopwords.txt') ])
 final = ''
-for seg in fenci:
+fwl=''
+fwl2=''
+
+for seg in fenci:     #去停词
     if seg not in stopwords:
             final += seg
 file_handle1=open('去停词结果.txt',mode='w')
 file_handle1.writelines(final)
 file_handle1.close()
 
+word=''   #去停词以及长度小于2的词
+for seg in fenci:
+    if seg not in stopwords:
+        fwl+=seg
 
+for seg1 in fwl:
+    word+=seg1
+    if seg1=='/' and len(word)<3:
+        word=''
+    if seg1=='/' and  len(word)>2:
+
+            fwl2+=word
+            word=''
+file_handle2=open('去停词以及长度小于2的词结果.txt',mode='w')
+file_handle2.writelines(fwl2)
+file_handle2.close()
 
 
 
