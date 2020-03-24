@@ -1,11 +1,9 @@
 import jieba
 import re
 import jieba.posseg as psg
-#coding:gbk
-#coding:utf-8
-# _*_ coding: utf-8 _*_
 
-fileobj = open('xyj.txt', 'r')    #读取文本放到strings中
+
+fileobj = open('xyj.txt', 'r',encoding='utf-8')    #读取文本放到strings中
 try:
    strings = fileobj.read()
 finally:
@@ -22,10 +20,10 @@ print(new_sents)
 
 
 #分词
-w=zqf.cut(strings)
+w=jieba.cut(strings)
 print('分词结果写入文本')
 fenci='/'.join(w)
-file_handle=open('分词.txt',mode='w')   #分词结果写入文本
+file_handle=open('分词.txt',mode='w',encoding='utf-8')   #分词结果写入文本
 file_handle.writelines(fenci)
 file_handle.close()
 
