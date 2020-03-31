@@ -1,0 +1,1 @@
+Missing git tag for 0.41 release，TypeError: lcut() got an unexpected keyword argument 'use_paddle'，自定义词典与默认词典冲突时候，enable paddle lazy load，warning: the imp module is deprecated in favour of importlib，当前词性标注，只支持中文吗，英文字母都会标注为eng吗？

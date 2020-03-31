@@ -1,0 +1,470 @@
+与 whoosh 集成时，无法parse "*" 这个通配符
+paddle 模式下词性标注，并发时可能会出错
+添加自定义词后依然分词失败
+分词不成功，分词后还是完整的句子
+paddle模型如何再训练，paddle模式词典添加自定义关键词不生效
+Fix deprecation warnings due to invalid escape sequences.
+cut mixed languages use paddle
+词典格式中的词频指的是什么？
+Deprecation warning due to invalid escape sequences in Python 3.8
+Remove meaningless branch statements
+NLTK英文
+字典如何添加包含关键字的模糊匹配
+无法安装，缺少文件
+test_whoosh.py 中，parser.parse(keyword)的问题
+Missing git tag for 0.41 release
+TypeError: lcut() got an unexpected keyword argument 'use_paddle'
+自定义词典与默认词典冲突时候
+enable paddle lazy load
+warning: the imp module is deprecated in favour of importlib
+当前词性标注，只支持中文吗，英文字母都会标注为eng吗？
+如何把凡是带“女”的都分出来
+> @gumblex 你好，想请教下，为什么要把前缀也存起来呢，不在字典的词语前缀，词频永远是0吧？
+自定义新词只被识别一次
+输入一个重复的词，很长很长，就会卡死，没有分好词
+jieba.load_userdict 字典中不能省略词频与词性？
+jieba 如何才可以自动识别 xx年xx月xx日  浮点数
+自定义词典在分词标注 不起作用
+add jieba
+Update extract_tags_idfpath.py
+自定义词典如何持久化添加
+如何不分词获取词性？
+ValueError: math domain error
+提取关键字可以用全模式吗
+请问分词的过程属于网络io还是处于cpu密集型
+全角数字分词
+自动保存/导出字典
+为什么module 'jieba' has no attribute 'analyse'？其他的模块都有。
+Update tfidf.py
+Want a progress bar.
+online demo挂了
+词性标注问题较大
+怎么才能取消显示这段文字？
+分词错误
+请问关键提取是否有合并计算同义词权重？
+elasticsearch 与 Jieba 结合后，无法配置 自定义词 进行分词索引
+词性强制设定（不用词典）
+关于类似的词分词只出现了一次
+请问gumblex这个demo文言文分词是怎么实现的？
+特殊Unicode符号怎么实现分词？
+jieba.load_userdict 对标点符号失效
+ add global declaration for start_P and trans_P (for improving symmetry, readability and syntax correctness)
+allowPOS  应该有一个 #词性解释# 参照表
+【BUG反馈】jieba.load_userdict 对自定义中文词性 无法解析
+我也有类似的问题，能否在一个工程中能否载入多个字典，然后根据方法需要动态选择使用哪个？
+你好，请问jieba会出matlab的版本吗？
+发现jieba.cut带hmm的分词，实际上是先DAG再对一串单个词的用hmm分词
+jieba 在同一工程不同类别 载入自定义词库问题
+jieba.addword()方法导致OverflowError: int too large to convert to float
+想换成其他语言，我需要准备什么？
+sentence split exclude · many names include ·
+停止词支持类似一定的匹配功能吗?
+Syntax issue on string 495
+如何恢复成默认词典？
+关于jieba的完整文档
+自定义字典每行如果只有词组,没有词频时,jieba.load_userdict()会提示错误:IndexError: list index out of range
+How can I accelerate custom user dict loading?
+AttributeError: 'module' object has no attribute 'load_userdic'
+关于自定义词典大小上限
+拓展词语或句子
+请教jieba.analyse.extract_tags 切出来的词是否都在 jieba.cut 切出的词里面？
+怎样直接读取io？
+jieba中如何提高抽取关键词的权重？
+请问如果自定义扩展词库 修改词性，让词性带上数字，怎么说实现？
+bibtex引用 jieba
+词性标注模块对数字标注的问题
+无法调用Jieba库--module 'jieba' has no attribute 'Icut' 
+jieba.analyse.extract_tags 不能使用自定义的词典吗?
+Can not cut fraction by using add_word
+原词看电视被删掉，分出来后（看电视）变成x，已解决
+建议加入自动摘要功能
+结巴有命名体识别吗？
+posseg 中疑似打错一个变量名
+关于 suggest_freq 中的 add_word 的指向错误
+请问词典中的zg词性是什么意思？
+叠罗汉
+Add only logging.NullHandler to default_logger
+"一个三十" 这种如何分开
+频率最大算法的正向与反向
+print(jieba.lcut("a b c"))
+如何评估 extract_tags 结果的表现
+suggest_freq无法处理特殊符号
+怎么保存自己添加的词到词典？
+jieba.initialize()函数无法处理带中文路径
+TF_IDF分析三国演义的地名，为何结果完全不对？
+jieba 分词格式有那些，并且怎么动态加载分词呢？
+某些领域中，自己设定的特定分词效果如何加入
+这个ns(地名)词性的识别有好多问题啊
+请教: 自定义字典里的分词不能被识别的问题
+Changing cache file rigths to 666 so that different users on the same…
+请问支持先分词，再基于分词结果进行词性标注吗？
+如何验证分词的准确性问题
+jieba分词是否支持依存句法分析？
+fixed pyinstall not found idf.txt
+特殊分词控制
+調整使用自定義的tf-idf語料庫(set_idf_path)，可讀取有空格的英文詞彙
+能否替换jieba使用的词库，而不是补充jieba的词库？
+TFIDF算法要取多少topK
+请问，官方什么时候能出一个PHP版本呢？因为分词可能是对网页传来的信息直接就分词了
+地名部分词性不准确
+如何将识别出的新词加入用户字典？
+请问如何定义如“建设银行”=“建行”这类，以便在统计或者模糊匹配的时候被定义为同一个单词？
+添加自定义词 为何切不出来呢
+fix the inconsistent segment result
+使用 add_word 和 suggest_freq 后，词语还是被拆分
+研究发现，5-HT功能活动降低与抑郁症患者的抑郁心境、食欲减退、失眠、昼夜节律紊乱、内分泌功能紊乱、性功能障碍、焦虑不安、不能应付应激、活动减少等密切相关；而5-HT功能增高与躁狂症的发病有关。
+连在一起的数词和量词可以分到一起去吗？
+Update test_userdict.py
+为什么不给posseg添加cut_for_search?
+自定义词包含字母与数字导致新词不生效
+形容词某些情况下变成了名词的问题反馈
+请问下同义词该怎么处理呢？
+同时加载多个user_dict，不同词性的相同词语存在覆盖的情况，怎么解决？
+结巴多线程分词怎么比单线程更慢呢？
+更新词典，缓存jieba.cache是否会更新?
+请问大家有好的停用词词典么
+识别含未登录词的句子沿用有向无环图和最大概率路径的方法
+词频高却没有被切出来
+TextRank 算法疑问？
+如何动态加载自定义词典
+请问HMM如果分词不准确了，该怎么修改呢？
+cut_all为True时反而切不出正常模式下的词
+复合词，这种怎么分词处理
+为什么对gen_pfdict并行化没有加速效果呢
+可以处理文言文吗？
+在Windows和linux下，jieba.posseg用于词性提取英语，词性不一样
+通过文件名的形式加载自定义用户词典时，若省略掉词频和词性，每一个单词后面必须要加一个空格，不然会报错
+词性标注不正确
+’查询卡’如何才能切分成‘查询’和‘卡’呢？
+請問是否能更詳細解釋DAG的建立機制
+AttributeError: module 'jieba' has no attribute 'lcut'
+项目不维护了吗
+字典中的“出生”无法识别的bug
+带 “-”的英文自定义单词问题
+停词如何添加
+第三方库与jieba的兼容问题
+请问如何添加表情做分割
+extract_tags中分词不合理
+source of the word dictionary
+想问下jieba.load_userdict(userdic)是否会覆盖
+结巴分词中 自定义词典里面的新词的tfidf是怎么算的呢？
+为jieba.posseg增加cut_all选项允许全模式下词性标注
+AttributeError when use jieba: 'float' object has no attribute 'decode'
+jieba无法正确识别人名啊！
+bug fix for cut_all mode
+关于 re_han_cut_all 和 re_han_default 所设定的正则不同的问题
+3只鸡 被分成了 [3,只鸡]
+如何实现单个字的分词及统计，希望能画出单个字的云图
+3.6的协程语法完全无用,多协程无提升
+为什么会建立一个缓存文件,单独一个0.889秒,会不会每次都建立缓存.
+千与千寻和浪客剑心居然是成语
+bug? add_word失败了
+带中横杆"-"的词如何把它当做一个词
+使用词典一定能把词典中的词分开吗？
+如何删除已添加的用户词典
+加入了字典后在本地环境下测试没问题，但使用了flask的web框架后似乎就不行了
+如何只使用某个自定义的词典?
+為什麼多進程時只有一個進程在跑？
+请问能否自定义正则匹配
+Questiong) extract words from sentence with word base.
+关于“云计算”、“石墨烯”等词语的词性标注问题
+"书品相"切词问题
+word_add
+英文分词单词被切分
+demo failed
+`add_word` doesn't work with punctuation marks
+是否提供清除suggest_freq结果的函数?
+jieba.analyse.textrank()方法提取英文文本的关键词没有输出数据，但是tfidf()方法则可以处理英文文本。
+和Stanford Word Segmenter比较，以及如何在论文中引用？
+延迟加载PROB模型和默认词典
+re_num判断数字的问题
+词频省略时使用自动计算的能保证分出该词的词频
+如何中途换词典user dict?
+分词词典无效
+请问，如何能将“男性”分词成“男”和“性”呢？
+怎么实现jieba在内存中替换自定义词典和stopwords的值?
+sensitive
+请问怎么对日期时间类词进行准确分词
+怎么将颜文字添加到user dict呢
+Update README.md
+使用jieba3k时，导入自定义user_dict文件时出错
+如何重新训练模型？
+请问新发现的词可以导出吗？
+jieba.posseg.cut 分词将百分比分割成数字和符号，并且标注tag为'x'
+jieba0.39 add_word添加词需要在并行之前添加
+使用c/c++重写了计算DAG和HMM中的vitrebi函数，速度大幅提升
+centos 7 安装时候报错
+请问dict.txt是通过什么规则得到的呢？
+希望能出一个适用Elasticsearch的插件
+词性使用的是什么标准？zg是什么词性？
+用户自定义字典词频受默认词典的影响权重
+add load_userlist method
+jieba分词如何对一句话进行一元分词？比如：“我来到北京清华大学”  分成： 我 / 来 / 到 / 北 / 京 / 清 / 华 / 大 / 学
+自定义词库可否包含中文和英文的组合
+自定义词库中，可否包含“标点符号+中文”的组合？
+增加自定义词典是关闭文件
+并行和加入自定义词典的调用顺序对自定义词典的载入有很大的影响
+是否应该关闭文件
+Add LICENSE to MANIFEST.in
+fix unit test encoding for python 2
+在线demo似乎崩了
+有没有接口返回分词结果的可信度？
+wiki里“3）对Python中文分词模块结巴分词算法过程的理解和分析”跳转到黄网
+fix exception "Not a directory" when using analyse module
+Why do you cut some unicode symbols
+多线程导致载入自定义词典不一致问题
+jieba.add_word怎么不生效
+用户实例化`Tokenizer()`对象,`suggest_freq`不起作用
+可以支持特殊规则不分词吗
+为什么不能用自己的语料训练新的HMM模型
+POS list
+怎么去除“Building prefix dict from the default dictionary ...”的提示
+我想用jieba分词后，只想提出里面的中文分词，不要标点符号，怎么用python处理啊 谢谢
+有安卓版本吗,java版本里面有些类,sdk舍弃了
+关于textrank.py中rank()方法的探讨
+带有罗马数字的自定义词无法正确识别
+如何優化關鍵詞提取時間
+我想比较两个文件内容的相似度，算tfidf做weight，但是怎么先算出df呢
+extract_tags 忽略单字不合理
+如何保证公交和公交线路名不被切割
+如何将iphone 5，xbox one 等分成一个词
+为什么结巴对繁体字的pos-tagging支持的不好呢？
+增加了自定义词典后，一个完整的单词被强行分开了
+jieba可以做关键词分配吗？
+请将许可文件并入pypi包中。 Please add the license file to the pypi package.
+自定义词典词频计算
+发邮件 为什么不能分成 ‘发 v’  和 ‘邮件 n’
+请教：jieba适合初学者学习其源码吗？
+想分的词却合成一个词了
+AttributeError: 'int' object has no attribute 'decode'
+某些关键词抽取不到
+请问提取关键词时debug信息如何关闭
+Maybe the demo site is down?
+能自定义词性吗？
+请问jieba有没有中文纠错的功能呢？
+for help,  jython+jieba failed, ValueError: insecure string pickle
+fix alllowPos logic in Textrank to be consistent with TF-IDF
+jieba/__init__.py 48行
+为什么"今天上午"的标注是nr ？
+如何给筛选出来的关键词标注词性？
+jieba詞庫来源于何处？
+可以使用数据库保存用户自定义词典吗？
+mac 下 python3 的命令行分词中，选项中加了分割符选项却不指定的话，程序不会自动结束。
+ChineseAnalyzer导入失败
+offset值应该和原输入保持一致
+jython can't use jieba
+可否在论文中引用您的分词器
+dict是如何生成的？生成dict时词频统计是如何统计的？
+请问能否在已分出词的基础上进一步发现新词
+避免含標點的數字被錯誤分詞
+Fix a typo in jieba/__init__.py
+“挺不错” 为什么词性是 i
+可否加入情緒分析功能? 
+Master
+词性标注可以只用词性的大类么？
+My NLP
+HMM模型参数具体是怎样训练出来的？
+‘今天下午’被分成了人名
+为什么我用jieba切出来的是一个个的字，而不是词。
+自定义词典中单个词语中包含空格和"-"
+請問如何判斷斷詞後的詞，是否有出現在字典內?
+add self-defined dict of proper nouns from wikipedia (增加wikipedia專有名詞的dict)
+词语是Unicode对词语做文本分析存在的问题
+请问一个词有多个词性，自定义字典该如何定义
+可以直接对切分语料用baum算法求模型参数吗？
+【分享】好多人需要的：关键词带空格和特殊字符方法~~
+自定义主词库，关闭了HMM，还是会分出英文。无论长短
+可不可以只输出用户词典里有的词？
+进行关键词提取之前，能否传入自己的分词结果
+关于词语中有空格的情况
+您好，请问jieba现在有没有支持windows系统的并行模块呢？
+［请教］如何将类似“abc123456”的文本切分为“abc”和“123456”？
+自定義詞典生成
+关于finalseg模块中re_han的问题
+词性标注出的词性与词典中不同
+词性标注
+词性 eng 是啥？   为什么官方没有词性对照表？ 
+词性冲突
+結巴自建詞庫中如何找出有空白的英文組合字?
+如何用代码修改默认词库？
+jieba优化以支持spark-stream高效率分词
+spark中import jieba.analyse失败 
+词典分隔符用空格就不能添加含有空格的词了
+python 无法添加单个词汇
+当数据量大时，extract_tags 方法非常慢
+cache文件在分词里起了什么作用？可否有无cache的模式
+simplify implementation of 2-gram and 3-gram extraction
+jieba.load_userdict()的问题
+，开兄控欧拉5555566555555555，mbvcxzzxz/
+默认词典有词存疑
+wiki自定义词库替代默认词库
+有关于词性的吗？
+如何在论文中引用结巴分词？
+分词结果异常
+关键词抽取处理停用词时的一个UE设计问题
+添加自定义词典不起作用
+是否可以用清华THULAC使用的语料库来训练jieba的模型？
+如何多次载入自定义词典？
+jieba.cut()和jieba.posseg.cut()的分词结果不一致？
+在线演示出错了，需要升级
+在提取关键词的时候，如何去除掉停止词
+jieba.dt找不到
+如何自定义IDF文件
+中英文数字混合切分
+结巴分词怎么运行整个文件啊
+中文标点符号如何处理？
+jieba.load_userdict 可以支持tuple吗？
+AttributeError: module 'jieba' has no attribute 'cut'
+jieba
+jieba.set_dictionary 會忽略詞性
+在一个句子中出现两个相同的组合的词
+use jieba in sklearn.feature_extraction.text.TfidfVectorizer
+(How) can I permanently change the POS tag for a word?
+Efficiency of Jieba python?
+    f.name, lineno, line)) ValueError
+運行中修改字典，重新load cache
+建议优化词典内存结构
+建议词典分隔符空格改成\t
+分词的问题
+分词错误
+用户词典出现错误
+你们的demo挂了
+jieba.lcut 文件怎么用法
+Failed building wheel for jieba
+能提供一下统计指定关键词词频的接口吗？
+Installation failure
+bug in del_word
+命令行输入输出的方式，可以标注词性吗
+另外问一下jieba可以分句吗？
+词性标注的分词和Tokenize分词不一致？
+关于TFIDF的几个问题
+怎么自动过滤停用词和标点符号?
+英文句号的错误
+AttributeError: 'module' object has no attribute 'cut'
+带逗号的词语切分
+IP地址的問題
+搜索问题
+期待Golang版的！
+不能删除自定义word
+hadoop load userdict
+IOError occured when jieba submitted to spark cluster 
+tfidf
+《》标题符号包围的电影名，电视名能控制直接拆分成一个词吗
+jieba0.36，英文单词会被切分
+导入词典是报错
+第四部分，词性标注的例子出现错误 'pair' object is not iterable
+jieba有官方的QQ群之类的吗？
+能否对已经分词的文本单独进行词性标注呢
+新词发现
+使用阿里云，用virtualenv和pip竟然无法顺利安装jieba
+ValueError: math domain error
+自带词典中词与自定义词曲中词相同时，出现的问题！！
+词性标注的问题
+lcut不可用
+求助
+怎样将某个词必然与其他的词分隔开？
+对于jieba分词的一个疑问
+想拆除带有特殊符号的词
+想拆出一个带有中文和英文的词
+带有词性标注的分词效率是多少？
+How to use jieba in hadoop?
+新版本无法载入自定义词库
+word segementation of "省"
+jieba.posseg.cut 分词问题
+windows下加载自定义词典的bug
+解码的bug
+分词改进
+「台中」總是被切成「台」「中」
+ADD dict
+請問如何簡單取出新詞?
+Version 4 sqlite memory usage patch
+新增自定义词典后分词不准确了
+用 pycharm 找不到 cut 怎么回事啊
+词性标注问题
+如何只处理中文？
+分词结果很奇怪
+extract_tags结果会遗漏分词
+ChineseAnalyzer的問題
+“我们中出了一个叛徒”分词结果不一致
+关于自定义词典词频问题等
+如何从零开始建立一个中文词典
+分词部分报错
+无法识别userdict中新增标点符号的词性
+jieba支持文本断句吗？
+减少IO开销
+Jieba3k
+有过滤过滤功能吗？
+add_word(word, freq, tag=None)能增加对字符串的支持吗？
+吴国忠臣伍子胥的切词结果是吴国忠/ 臣/ 伍子胥
+用户自定义字典内容支持正则吗？
+关于标点符号
+对长标点符号的处理
+生成关键词，里面有一些符号如何处理，如()空格等一些符号
+Save word freqs in trie instead a dedicated map
+是否会出PHP版本的接口？
+jieba的词性标注结果与ictclas标准不一致
+结巴词库不支持拼音很遗憾
+增量导入用户自定义词典
+是否有和Haystack集成的官方说明？
+golang jieba
+词性标注的viterbi的line28和line29的判断条件一致
+AT&T和T-shirt这类词无法识别，也无法通过加字典来解决
+pip安装jieba，出现MemoryError
+4英寸，7.5ml，这种词是否有办法辨识？
+结巴分词去重
+Jieba3k
+词性标注多字
+Update __init__.py
+头发长长了，变成了长头发。
+词性标注后，少字
+关于字典
+修改load_userdict()方法，提高读取用户字典文件效率，增加健壮性。
+关于jieba分词提取权重最大的关键词的示例代码问题。
+大侠，jieba没有词性消歧么？
+结巴分词有命名实体识别功能吗？
+使用其他字典出现的问题ValueError: too many values to unpack
+jieba分词的学习能力如何体现
+如何控制精确分词的粒度，尽可能小
+请教一下jieba的词典的格式是怎样的？
+关于CRF分词
+可以加入HMM模型tran的部分嘛？
+分词时能同时去掉停用词么？
+求教搜索引擎模式下如何实现词性标注
+UnicodeEncodeError,源码只decode?
+jieba分词 py2exe
+Update __init__.py
+结巴分词出现type 'exceptions.IOError' 
+posseg中viterbi需要在终止时刻优先选取为ES的状态吗？
+中文名支持
+GAE的支持
+获取词性时，会缺失分词准确度
+怎么用结巴分词提取关键词和各自的频数啊？
+请问，为什么不用C/C++写个呢？结巴的分词效果挺好的。
+有词库意义的库吗？类似wordnet的功能？除了词性，还有近义词，和上下位？
+TOPK排序后结果没有调用自定义词典的分词结果？
+出现 Cannot allocate memory  错误
+def get_DAG(sentence) method question
+jieba0.31与whoosh2.5.1集成过程中，出现了KeyError:"Can't store a null key ()"
+关于算法
+作者能否分享语料分析的源码？
+能加上分出时间和数字序列吗
+关于idf.txt
+请问大家都是如何利用这个工具的呢？
+支持PyPy
+合并数词和量词 
+请问，jieba有关于停用词的处理吗
+夏天能穿多少就穿多少 冬天能穿多少穿多少
+用户字典
+结巴分词的关键词提取
+关于利用动态规划求解最大概率路径
+提供选项控制输出
+你好~ 在打包程序的时候出现了问题
+处理词典时的建议
+能整合到sphinx中么？
+jieba 能否部署到新浪SAE中？如何操作？
+能否为cut_for_search方法添加上词性标注？
+关键词提取质量很差
+关于jieba的分词效果
+添加对 whoosh 的接口
+通过关键词获取其同义词
+能提供简单的说明文档吗？

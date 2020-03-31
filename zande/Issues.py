@@ -11,9 +11,9 @@ def getissues():
     isu = []
     isutimes=[]
     titles = []
-    nu=1
+    nu=13
     for repo in repos:
-        for i in range(17):
+        for i in range(8):
             title=[]
             isutime=[]
             repo_url = 'https://api.github.com/repos/fxsjy/jieba/issues?page=%d' %nu# 确定url
@@ -65,3 +65,37 @@ def readURL(cache,url):
     		return content
         '''
 getissues()
+
+'''
+def getissues():
+    isu = []
+    isutimes=[]
+    titles = []
+    bodys=[]
+    nu=13
+    for repo in repos:
+        for i in range(8):
+            title=[]
+            body=[]
+            isutime=[]
+            repo_url = 'https://api.github.com/repos/fxsjy/jieba/issues?page=%d' %nu# 确定url
+            print(repo_url+'\n')
+            repoisu = readURL('data/als/%s' % (repo), repo_url)  # 访问url得到数据
+            repoisu = repoisu and json.loads(repoisu)  # 将数据类型转换
+            for issue in repoisu:
+                title.append(issue['title'])
+                body.append(issue['body'])
+                isutime.append((issue['updated_at'])[:10])
+            print(body)
+            for b in body:
+                b=re.sub('[a-zA-Z]','',b)
+            print(body)
+            f=open("text.txt","a+")
+            ftime=open("uptime.txt","a+")
+            fb=open("bodys.txt","a+")
+            for t in title:
+                f.write(t+'\n')
+            for it in isutime:
+                ftime.write(it+'\n')
+            for ib in body
+'''

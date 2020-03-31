@@ -7,6 +7,61 @@ from jieba import analyse
 import functools
 
 
+#预处理
+'''
+fpub=open('pubtime.txt','r+')
+fup=open('uptime.txt','r+')
+ftx=open('text.txt','r+')
+ftag=open('tags.txt','r+')
+
+lpub=fpub.readlines()
+lup=fup.readlines()
+ltx=ftx.readlines()
+ltg=ftag.readlines()
+
+emp=[]
+lsp=[]
+lsu=[]
+lst=[]
+ltag=[]
+cmp=[]
+check=[]
+
+for line in lpub:
+    lsp.append(line[0:-1])
+for line in lup:
+    lsu.append(line[0:-1])
+for line in ltx:
+    lst.append(line[0:-1])
+for line in ltg:
+    ltag.append(line[0:-1])
+
+for i in range(9):
+    emp=[]
+    emp.append(lsp[i])
+    cmp.append(emp)
+    check.append(emp)
+
+
+for nu in range(len(lsu)):
+    for i in range(9):
+        if lsu[nu] >= ((check[i])[0]):
+            #check[i].append(lsu[nu])
+            cmp[i].append(lst[nu])
+            break
+
+douhao='，'
+
+for i in cmp:
+    del i[0]
+
+for i in cmp:
+    douhao.join(i)
+'''
+
+#模型
+
+
 def get_stopword_list():
     stop_word_path = 'stopwords.txt'
     stopword_list = [sw.replace('\n', '') for sw in open(stop_word_path,encoding='utf-8').readlines()]
@@ -108,12 +163,17 @@ class TfIdf(object):
             tfidf = tf * idf
             tfidf_dic[word] = tfidf
 
+        fopen=open("tikey.txt","a+")
+        tflis=[]
         tfidf_dic.items()
         for k, v in sorted(tfidf_dic.items(), key=functools.cmp_to_key(cmp), reverse=True)[:self.keyword_num]:
             print(k + "/ ", end='')
+            tflis.append(k+'/')
+        for l in tflis:
+            fopen.write(l)
+        fopen.write('\n')
+        fopen.close
         print()
-
-
 
 
 
@@ -127,13 +187,45 @@ def tfidf_extract(word_list, pos=False, keyword_num=10):
 def textrank_extract(text, pos=False, keyword_num=10):
     textrank = analyse.textrank
     keywords = textrank(text, keyword_num)
+    fopen=open("trkey.txt","a+")
+    trlis=[]
     for keyword in keywords:
         print(keyword + "/ ", end='')
+        trlis.append(keyword+'/')
+    for l in trlis:
+        fopen.write(l)  
+    fopen.write('\n')
+    fopen.close
     print()
+
+
+#run
+
 
 
 if __name__ == '__main__':
     pos = True
+    
+    
+    ft=open('jiebats.txt',"r+",encoding='utf-8')#encoding='utf-8'
+    text=''
+    f=ft.readlines()
+    for line in f:
+        text=text+line
+    seg_list = seg_to_list(text, pos)
+    filter_list = word_filter(seg_list, pos)
+
+    print('TF-IDF模型结果：')
+    tfidf_extract(filter_list)
+    print('TextRank模型结果：')
+    textrank_extract(text)
+
+    ft.close()
+
+
+
+'''
+pos = True
     ft=open('jiebats.txt',"r+",encoding='utf-8')
     text=''
     f=ft.readlines()
@@ -148,3 +240,4 @@ if __name__ == '__main__':
     textrank_extract(text)
 
     ft.close()
+'''

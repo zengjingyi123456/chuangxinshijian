@@ -1,0 +1,1 @@
+字典如何添加包含关键字的模糊匹配，自动保存/导出字典，无法调用Jieba库--module 'jieba' has no attribute 'Icut' ，AttributeError: module 'jieba' has no attribute 'lcut'，为jieba.posseg增加cut_all选项允许全模式下词性标注，‘今天下午’被分成了人名，用户自定义字典内容支持正则吗？

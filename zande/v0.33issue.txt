@@ -1,0 +1,1 @@
+新版本无法载入自定义词库，word segementation of "省"，jieba.posseg.cut 分词问题，windows下加载自定义词典的bug，解码的bug，ADD dict，請問如何簡單取出新詞?，Version 4 sqlite memory usage patch，词性标注问题，如何只处理中文？，分词结果很奇怪，extract_tags结果会遗漏分词，ChineseAnalyzer的問題，关于自定义词典词频问题等，如何从零开始建立一个中文词典，无法识别userdict中新增标点符号的词性，减少IO开销，Jieba3k，有过滤过滤功能吗？，Jieba3k，使用其他字典出现的问题ValueError: too many values to unpack，怎么用结巴分词提取关键词和各自的频数啊？
