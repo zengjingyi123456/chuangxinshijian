@@ -1,6 +1,7 @@
-# -*- coding: utf-8 -*-
+﻿# -*- coding: utf-8 -*-
 
 import math
+
 import jieba
 import jieba.posseg as psg
 from gensim import corpora, models
@@ -8,78 +9,49 @@ from jieba import analyse
 import functools
 
 
-#预处理
-'''
-fpub=open('pubtime.txt','r+')
-fup=open('uptime.txt','r+')
-ftx=open('text.txt','r+')
-ftag=open('tags.txt','r+')
-
-lpub=fpub.readlines()
-lup=fup.readlines()
-ltx=ftx.readlines()
-ltg=ftag.readlines()
-
-emp=[]
-lsp=[]
-lsu=[]
-lst=[]
-ltag=[]
-cmp=[]
-check=[]
-
-for line in lpub:
-    lsp.append(line[0:-1])
-for line in lup:
-    lsu.append(line[0:-1])
-for line in ltx:
-    lst.append(line[0:-1])
-for line in ltg:
-    ltag.append(line[0:-1])
-
-for i in range(9):
-    emp=[]
-    emp.append(lsp[i])
-    cmp.append(emp)
-    check.append(emp)
+datat='v0.36issue.txt'
 
 
-for nu in range(len(lsu)):
-    for i in range(9):
-        if lsu[nu] >= ((check[i])[0]):
-            #check[i].append(lsu[nu])
-            cmp[i].append(lst[nu])
-            break
+# 数据加载，pos为是否词性标注的参数，corpus_path为数据集路径
+def load_data(pos=False, corpus_path='text.txt'):
+    # 调用上面方式对数据集进行处理，处理后的每条数据仅保留非干扰词
+    doc_list = []
+    #encoding='utf-8'
+    for line in open(corpus_path, 'r'):
+        content = line.strip()
+        seg_list = seg_to_list(content, pos)
+        filter_list = word_filter(seg_list, pos)
+        doc_list.append(filter_list)
 
-douhao='，'
-
-for i in cmp:
-    del i[0]
-
-for i in cmp:
-    douhao.join(i)
-'''
-
-#模型
+    return doc_list
 
 
+# 停用词表加载方法
 def get_stopword_list():
+    # 停用词表存储路径，每一行为一个词，按行读取进行加载
+    # 进行编码转换确保匹配准确率
     stop_word_path = 'stopwords.txt'
     stopword_list = [sw.replace('\n', '') for sw in open(stop_word_path,encoding='utf-8').readlines()]
     return stopword_list
 
 
+# 分词方法，调用结巴接口
 def seg_to_list(sentence, pos=False):
     if not pos:
+        # 不进行词性标注的分词方法
         seg_list = jieba.cut(sentence)
     else:
+        # 进行词性标注的分词方法
         seg_list = psg.cut(sentence)
     return seg_list
 
 
+# 去除干扰词
 def word_filter(seg_list, pos=False):
     stopword_list = get_stopword_list()
     filter_list = []
+    # 根据POS参数选择是否词性过滤
+    ## 不进行词性过滤，则将词性都标记为n，表示全部保留
     for seg in seg_list:
         if not pos:
             word = seg
@@ -89,42 +61,36 @@ def word_filter(seg_list, pos=False):
             flag = seg.flag
         if not flag.startswith('n'):
             continue
-        if word in stopword_list:
-            i=1
-        elif len(word) <= 1:
-            i=1
-        else:
+        # 过滤停用词表中的词，以及长度为<2的词
+        if not word in stopword_list and len(word) > 1:
             filter_list.append(word)
 
     return filter_list
 
 
-def load_data(pos=False, corpus_path='text.txt'):
-    doc_list = []
-    for line in open(corpus_path, 'r',encoding='unicode_escape'):
-        content = line.strip()
-        seg_list = seg_to_list(content, pos)
-        filter_list = word_filter(seg_list, pos)
-        doc_list.append(filter_list)
-
-    return doc_list
 
 
+# idf值统计方法
 def train_idf(doc_list):
     idf_dic = {}
+    # 总文档数
     tt_count = len(doc_list)
 
+    # 每个词出现的文档数
     for doc in doc_list:
         for word in set(doc):
             idf_dic[word] = idf_dic.get(word, 0.0) + 1.0
 
+    # 按公式转换为idf值，分母加1进行平滑处理
     for k, v in idf_dic.items():
         idf_dic[k] = math.log(tt_count / (1.0 + v))
 
+    # 对于没有在字典中的词，默认其仅在一个文档出现，得到默认idf值
     default_idf = math.log(tt_count / (1.0))
     return idf_dic, default_idf
 
 
+#  排序函数，用于topK关键词的按值排序
 def cmp(e1, e2):
     import numpy as np
     res = np.sign(e1[1] - e2[1])
@@ -140,14 +106,16 @@ def cmp(e1, e2):
         else:
             return -1
 
+# TF-IDF类
 class TfIdf(object):
-
+    # 四个参数分别是：训练好的idf字典，默认idf值，处理后的待提取文本，关键词数量
     def __init__(self, idf_dic, default_idf, word_list, keyword_num):
         self.word_list = word_list
         self.idf_dic, self.default_idf = idf_dic, default_idf
         self.tf_dic = self.get_tf_dic()
         self.keyword_num = keyword_num
 
+    # 统计tf值
     def get_tf_dic(self):
         tf_dic = {}
         for word in self.word_list:
@@ -159,6 +127,7 @@ class TfIdf(object):
 
         return tf_dic
 
+    # 按公式计算tf-idf
     def get_tfidf(self):
         tfidf_dic = {}
         for word in self.word_list:
@@ -168,24 +137,17 @@ class TfIdf(object):
             tfidf = tf * idf
             tfidf_dic[word] = tfidf
 
-        fopen=open("tikey.txt","a+")
-        tflis=[]
         tfidf_dic.items()
+        # 根据tf-idf排序，去排名前keyword_num的词作为关键词
         for k, v in sorted(tfidf_dic.items(), key=functools.cmp_to_key(cmp), reverse=True)[:self.keyword_num]:
             print(k + "/ ", end='')
-            tflis.append(k+'/')
-        for l in tflis:
-            fopen.write(l)
-        fopen.write('\n')
-        fopen.close
         print()
 
 
-
-
+# 主题模型
 class TopicModel(object):
     # 三个传入参数：处理后的数据集，关键词数量，具体模型（LSI、LDA），主题数量
-    def __init__(self, doc_list, keyword_num, model='LSI', num_topics=5):
+    def __init__(self, doc_list, keyword_num, model='LSI', num_topics=4):
         # 使用gensim的接口，将文本转为向量化表示
         # 先构建词空间
         self.dictionary = corpora.Dictionary(doc_list)
@@ -269,12 +231,6 @@ class TopicModel(object):
         return vec_list
 
 
-
-
-
-
-
-
 def tfidf_extract(word_list, pos=False, keyword_num=10):
     doc_list = load_data(pos)
     idf_dic, default_idf = train_idf(doc_list)
@@ -285,17 +241,10 @@ def tfidf_extract(word_list, pos=False, keyword_num=10):
 def textrank_extract(text, pos=False, keyword_num=10):
     textrank = analyse.textrank
     keywords = textrank(text, keyword_num)
-    fopen=open("trkey.txt","a+")
-    trlis=[]
+    # 输出抽取出的关键词
     for keyword in keywords:
         print(keyword + "/ ", end='')
-        trlis.append(keyword+'/')
-    for l in trlis:
-        fopen.write(l)  
-    fopen.write('\n')
-    fopen.close
     print()
-
 
 
 def topic_extract(word_list, model, pos=False, keyword_num=10):
@@ -304,51 +253,28 @@ def topic_extract(word_list, model, pos=False, keyword_num=10):
     topic_model.get_simword(word_list)
 
 
-
-
-#run
-
-
-
 if __name__ == '__main__':
+    
     pos = True
-    
-    
-    ft=open('v0.39issue.txt',"r+")#encoding='utf-8'
+
+
+    testr=''
+    ft=open(datat,"r+")#encoding='utf-8'
     text=''
     f=ft.readlines()
     for line in f:
         text=text+line
+    
     seg_list = seg_to_list(text, pos)
     filter_list = word_filter(seg_list, pos)
+    for i in filter_list:
+        testr=testr+i
 
     print('TF-IDF模型结果：')
     tfidf_extract(filter_list)
     print('TextRank模型结果：')
-    textrank_extract(text)
+    textrank_extract(testr)
     print('LSI模型结果：')
     topic_extract(filter_list, 'LSI', pos)
     print('LDA模型结果：')
     topic_extract(filter_list, 'LDA', pos)
-    
-    ft.close()
-
-
-
-'''
-pos = True
-    ft=open('jiebats.txt',"r+",encoding='utf-8')
-    text=''
-    f=ft.readlines()
-    for line in f:
-        text=text+line
-    seg_list = seg_to_list(text, pos)
-    filter_list = word_filter(seg_list, pos)
-
-    print('TF-IDF模型结果：')
-    tfidf_extract(filter_list)
-    print('TextRank模型结果：')
-    textrank_extract(text)
-
-    ft.close()
-'''
