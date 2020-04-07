@@ -9,56 +9,7 @@ import functools
 
 
 #预处理
-'''
-fpub=open('pubtime.txt','r+')
-fup=open('uptime.txt','r+')
-ftx=open('text.txt','r+')
-ftag=open('tags.txt','r+')
 
-lpub=fpub.readlines()
-lup=fup.readlines()
-ltx=ftx.readlines()
-ltg=ftag.readlines()
-
-emp=[]
-lsp=[]
-lsu=[]
-lst=[]
-ltag=[]
-cmp=[]
-check=[]
-
-for line in lpub:
-    lsp.append(line[0:-1])
-for line in lup:
-    lsu.append(line[0:-1])
-for line in ltx:
-    lst.append(line[0:-1])
-for line in ltg:
-    ltag.append(line[0:-1])
-
-for i in range(9):
-    emp=[]
-    emp.append(lsp[i])
-    cmp.append(emp)
-    check.append(emp)
-
-
-for nu in range(len(lsu)):
-    for i in range(9):
-        if lsu[nu] >= ((check[i])[0]):
-            #check[i].append(lsu[nu])
-            cmp[i].append(lst[nu])
-            break
-
-douhao='，'
-
-for i in cmp:
-    del i[0]
-
-for i in cmp:
-    douhao.join(i)
-'''
 
 #模型
 
