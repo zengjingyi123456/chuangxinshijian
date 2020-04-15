@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-
+#zande
 
 from sklearn.feature_extraction.text import CountVectorizer
 
@@ -50,7 +50,8 @@ def average_word_vectors(words, model, vocabulary, num_features):
         feature_vector = np.divide(feature_vector, nwords)
         
     return feature_vector
-    
+
+#zande  
    
 def averaged_word_vectorizer(corpus, model, num_features):
     vocabulary = set(model.index2word)

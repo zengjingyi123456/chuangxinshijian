@@ -3,7 +3,7 @@ import re
 import nltk
 import string
 from nltk.stem import WordNetLemmatizer
-
+#zande
 stopword_list = nltk.corpus.stopwords.words('english')
 wnl = WordNetLemmatizer()
 
@@ -53,7 +53,7 @@ def pos_tag_text(text):
                          for word, pos_tag in
                          tagged_text]
     return tagged_lower_text
-    
+#zande   
 # lemmatize text based on POS tags    
 def lemmatize_text(text):
     
@@ -79,7 +79,7 @@ def remove_stopwords(text):
     filtered_text = ' '.join(filtered_tokens)    
     return filtered_text
 
-    
+#zande   
 
 def normalize_corpus(corpus, tokenize=False):
     

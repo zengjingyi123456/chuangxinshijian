@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-
+#zande
 
 CORPUS = [
 'the sky is blue',
@@ -82,7 +82,7 @@ idf = idf_diag.todense()
 
 # print the idf diagonal matrix
 print()
-
+#zande
 
 print(np.round(idf, 2))
 
@@ -142,7 +142,7 @@ model = gensim.models.Word2Vec(TOKENIZED_CORPUS,
                                window=10,
                                min_count=2,
                                sample=1e-3)
-
+#zande
 
 from feature_extractors import averaged_word_vectorizer
 

@@ -1,3 +1,4 @@
+#zande
 import jieba
 import jieba.posseg as pseg
 import json
@@ -17,10 +18,8 @@ import numpy as np
 pd_all = pd.read_csv('weibo_senti_100k.csv')
 
 
-outstr = []
-
-psd=pd_all[pd_all.label==1][0:40]
-nd=pd_all[pd_all.label==0][0:40]
+psd=pd_all[pd_all.label==1][0:2000]
+nd=pd_all[pd_all.label==0][0:2000]
 
 ptd=pd_all[pd_all.label==1][0:2000]
 ntd=pd_all[pd_all.label==0][0:2000]
@@ -77,8 +76,10 @@ def StopWords():
     wlst = [w.strip() for w in open(filepath, 'r', encoding='utf8').readlines()]
     return wlst
 
+#zande
 
 def seg_sentence(sentence, stop_words):
+    outstr = []
     stop_flag = ['x', 'c', 'u', 'd', 'p', 't', 'uj', 'm', 'f', 'r']
     sentence_seged = pseg.cut(re.sub('\n', '', sentence))
     for word, flag in sentence_seged:
@@ -115,7 +116,8 @@ y = [0] * len(pl3) + [1] * len(nl3)
 
 x_train, x_test, y_train, y_test = train_test_split(corpus, y, test_size=0.5)
 
-#vector = CountVectorizer()
+#vector = CountVectorizer() 
+#zande
 vector = TfidfVectorizer()
 xtrain = vector.fit_transform(x_train)
 
@@ -135,7 +137,7 @@ print('testdata准确率：',metrics.f1_score(pre, y_test, average='micro'))
 
 
 '''
-
+zande
 
 def get_stopword_list():
     stop_word_path = 'stopwords.txt'

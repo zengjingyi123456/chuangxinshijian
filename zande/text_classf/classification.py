@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-
+#zande
 
 from sklearn.datasets import fetch_20newsgroups
 from sklearn.cross_validation import train_test_split
@@ -42,7 +42,7 @@ train_corpus, test_corpus, train_labels, test_labels = prepare_datasets(corpus,
                                                                         test_data_proportion=0.3)
                                                                         
 from normalization import normalize_corpus
-
+#zande
 norm_train_corpus = normalize_corpus(train_corpus)
 norm_test_corpus = normalize_corpus(test_corpus)  
 
@@ -144,7 +144,7 @@ from sklearn.linear_model import SGDClassifier
 
 mnb = MultinomialNB()
 svm = SGDClassifier(loss='hinge', n_iter=100)
-
+#zande
 # Multinomial Naive Bayes with bag of words features
 mnb_bow_predictions = train_predict_evaluate_model(classifier=mnb,
                                            train_features=bow_train_features,
@@ -214,7 +214,7 @@ for document, label, predicted_label in zip(test_corpus, test_labels, svm_tfidf_
         num = num+1
         if num == 4:
             break
-
+#zande
 num = 0
 for document, label, predicted_label in zip(test_corpus, test_labels, svm_tfidf_predictions):
     if label == 18 and predicted_label == 16:

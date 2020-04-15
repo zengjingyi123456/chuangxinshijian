@@ -1,3 +1,4 @@
+#zande
 from sklearn import metrics
 import numpy as np
 import pandas as pd
@@ -30,6 +31,9 @@ print (pd.DataFrame(data=cm,
                                                ['spam', 'ham']],
                                        labels=[[0, 0], [0, 1]]))
 )
+
+#zande
+
 positive_class = 'spam'
 
 true_positive = 5.
