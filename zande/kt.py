@@ -12,9 +12,7 @@ import functools
 datat='v0.36issue.txt'
 
 
-# 数据加载，pos为是否词性标注的参数，corpus_path为数据集路径
 def load_data(pos=False, corpus_path='text.txt'):
-    # 调用上面方式对数据集进行处理，处理后的每条数据仅保留非干扰词
     doc_list = []
     #encoding='utf-8'
     for line in open(corpus_path, 'r'):
@@ -26,32 +24,23 @@ def load_data(pos=False, corpus_path='text.txt'):
     return doc_list
 
 
-# 停用词表加载方法
 def get_stopword_list():
-    # 停用词表存储路径，每一行为一个词，按行读取进行加载
-    # 进行编码转换确保匹配准确率
     stop_word_path = 'stopwords.txt'
     stopword_list = [sw.replace('\n', '') for sw in open(stop_word_path,encoding='utf-8').readlines()]
     return stopword_list
 
 
-# 分词方法，调用结巴接口
 def seg_to_list(sentence, pos=False):
     if not pos:
-        # 不进行词性标注的分词方法
         seg_list = jieba.cut(sentence)
     else:
-        # 进行词性标注的分词方法
         seg_list = psg.cut(sentence)
     return seg_list
 
 
-# 去除干扰词
 def word_filter(seg_list, pos=False):
     stopword_list = get_stopword_list()
     filter_list = []
-    # 根据POS参数选择是否词性过滤
-    ## 不进行词性过滤，则将词性都标记为n，表示全部保留
     for seg in seg_list:
         if not pos:
             word = seg
@@ -61,7 +50,6 @@ def word_filter(seg_list, pos=False):
             flag = seg.flag
         if not flag.startswith('n'):
             continue
-        # 过滤停用词表中的词，以及长度为<2的词
         if not word in stopword_list and len(word) > 1:
             filter_list.append(word)
 
@@ -70,27 +58,20 @@ def word_filter(seg_list, pos=False):
 
 
 
-# idf值统计方法
 def train_idf(doc_list):
     idf_dic = {}
-    # 总文档数
     tt_count = len(doc_list)
-
-    # 每个词出现的文档数
     for doc in doc_list:
         for word in set(doc):
             idf_dic[word] = idf_dic.get(word, 0.0) + 1.0
 
-    # 按公式转换为idf值，分母加1进行平滑处理
     for k, v in idf_dic.items():
         idf_dic[k] = math.log(tt_count / (1.0 + v))
 
-    # 对于没有在字典中的词，默认其仅在一个文档出现，得到默认idf值
     default_idf = math.log(tt_count / (1.0))
     return idf_dic, default_idf
 
 
-#  排序函数，用于topK关键词的按值排序
 def cmp(e1, e2):
     import numpy as np
     res = np.sign(e1[1] - e2[1])
