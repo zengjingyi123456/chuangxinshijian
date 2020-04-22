@@ -8,6 +8,7 @@ from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.naive_bayes import MultinomialNB,BernoulliNB,GaussianNB
 from sklearn.model_selection import train_test_split
 from sklearn import metrics
+from sklearn.preprocessing import MaxAbsScaler
 import math
 from gensim import corpora, models
 from jieba import analyse
@@ -18,8 +19,8 @@ import numpy as np
 pd_all = pd.read_csv('weibo_senti_100k.csv')
 
 
-psd=pd_all[pd_all.label==1][0:40]
-nd=pd_all[pd_all.label==0][0:40]
+psd=pd_all[pd_all.label==1][0:2000]
+nd=pd_all[pd_all.label==0][0:2000]
 
 ptd=pd_all[pd_all.label==1][0:2000]
 ntd=pd_all[pd_all.label==0][0:2000]
@@ -116,20 +117,21 @@ y = [0] * len(pl3) + [1] * len(nl3)
 
 x_train, x_test, y_train, y_test = train_test_split(corpus, y, test_size=0.3)
 
-#vector = CountVectorizer() 
+vector = CountVectorizer() 
 #zande
-vector = TfidfVectorizer()
-xtrain = vector.fit_transform(x_train)
+#vector = TfidfVectorizer()
+xtrain_v = vector.fit_transform(x_train)
+xtrain=MaxAbsScaler().fit_transform(xtrain_v)
 
-xtest = vector.transform(x_test)
-
+xtest_v = vector.transform(x_test)
+xtest = MaxAbsScaler().fit_transform(xtest_v)
 #模型
 clf = model(xtrain, y_train)
 pre = clf.predict(xtrain)
 
 #评估
 #print('======================================================')
-print("tfidf")
+print("countV-maxabs")
 pre = clf.predict(xtest)
 #print(pre)
 #print('======================================================')

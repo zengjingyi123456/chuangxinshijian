@@ -18,8 +18,8 @@ import numpy as np
 pd_all = pd.read_csv('weibo_senti_100k.csv')
 
 
-psd=pd_all[pd_all.label==1][0:40]
-nd=pd_all[pd_all.label==0][0:40]
+psd=pd_all[pd_all.label==1][0:2000]
+nd=pd_all[pd_all.label==0][0:2000]
 
 ptd=pd_all[pd_all.label==1][0:2000]
 ntd=pd_all[pd_all.label==0][0:2000]
@@ -92,7 +92,7 @@ def seg_sentence(sentence, stop_words):
 def model(tfidf,y):
 #    clf = MultinomialNB(alpha=0.1).fit(tfidf,y)
     clf = BernoulliNB(alpha=0.1).fit(tfidf,y)
-#     clf = GaussianNB(alpha=0.1).fit(tfidf,y)
+#    clf = GaussianNB(alpha=0.1).fit(tfidf,y)
     return clf
 
 stop_words = StopWords()
@@ -116,9 +116,9 @@ y = [0] * len(pl3) + [1] * len(nl3)
 
 x_train, x_test, y_train, y_test = train_test_split(corpus, y, test_size=0.3)
 
-#vector = CountVectorizer() 
+vector = CountVectorizer() 
 #zande
-vector = TfidfVectorizer()
+#vector = TfidfVectorizer()
 xtrain = vector.fit_transform(x_train)
 
 xtest = vector.transform(x_test)
@@ -129,7 +129,7 @@ pre = clf.predict(xtrain)
 
 #评估
 #print('======================================================')
-print("tfidf")
+print("CountVectorizer")
 pre = clf.predict(xtest)
 #print(pre)
 #print('======================================================')
