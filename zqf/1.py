@@ -3,7 +3,7 @@ import re
 import jieba.posseg as psg
 
 
-fileobj = open('xyj.txt', 'r',encoding='utf-8')    #读取文本放到strings中
+fileobj = open('jiebats.txt', 'r',encoding='utf-8')    #读取文本放到strings中
 try:
    strings = fileobj.read()
 finally:
@@ -29,7 +29,7 @@ file_handle.close()
 
 #去停词结果写入新文本
 print('去停词结果写入文本')
-stopwords = {}.fromkeys([ line.rstrip() for line in open('停词.txt') ])
+stopwords = {}.fromkeys([ line.rstrip() for line in open('stopwords.txt') ])
 final = ''
 fwl=''
 fwl2=''
@@ -37,7 +37,7 @@ fwl2=''
 for seg in fenci:     #去停词
     if seg not in stopwords:
             final += seg
-file_handle1=open('去停词.txt',mode='w')
+file_handle1=open('去停词结果.txt',mode='w',encoding='utf-8')
 file_handle1.writelines(final)
 file_handle1.close()
 
